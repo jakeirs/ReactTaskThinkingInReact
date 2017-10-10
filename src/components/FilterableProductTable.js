@@ -7,19 +7,25 @@ class FilterableProductTable extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            inputTextValue: '',
-            inputCheckboxValue: false
+            filterText: '',
+            inStockOnly: false
         }
     }
 
     render() {
         const {products} = this.props;
-        // const {inputTextValue, inputCheckboxValue} = this.state;
+        const {filterText, inStockOnly} = this.state;
         return (
             <div>
                 <SearchBar
+                    filterText={filterText}
+                    inStockOnly={inStockOnly}
                 />
-                <ProductTable products={products}/>
+                <ProductTable
+                    products={products}
+                    filterText={filterText}
+                    inStockOnly={inStockOnly}
+                />
             </div>
         );
     }

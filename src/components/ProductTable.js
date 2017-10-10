@@ -5,28 +5,25 @@ import ProductRow from './ProductRow';
 
 const ProductTable = (props) => {
 
-    /** Firstly the logic*/
+    /** Firstly the logic
+     * If category of current product is NOT the same add to row*/
     const rows = [];
     let lastCategory = null;
 
     props.products.forEach(product => {
-        debugger;
        if (product.category !== lastCategory) {
-           debugger;
            rows.push(
                <CategoryProductRow
                    category={product.category}
                    key={product.category} />
            );
        }
-        debugger;
        rows.push(
 
            <ProductRow
                 product={product}
                 key={product.name} />
        );
-        debugger;
        lastCategory = product.category;
     });
 
