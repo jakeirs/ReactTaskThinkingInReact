@@ -12,6 +12,20 @@ class FilterableProductTable extends Component {
         }
     }
 
+    handleFilterTextChange = (event) => {
+        const filterText = event.target.value;
+        this.setState({
+            filterText: filterText
+        });
+    }
+
+    handlerInStockChange = (event) => {
+        const inStockOnly = event.target.checked;
+        this.setState({
+            inStockOnly: inStockOnly
+        });
+    }
+
     render() {
         const {products} = this.props;
         const {filterText, inStockOnly} = this.state;
@@ -20,6 +34,8 @@ class FilterableProductTable extends Component {
                 <SearchBar
                     filterText={filterText}
                     inStockOnly={inStockOnly}
+                    onInStockChange={this.handlerInStockChange}
+                    onFilterTextChange={this.handleFilterTextChange}
                 />
                 <ProductTable
                     products={products}
